@@ -1,0 +1,10 @@
+<tr>
+  <td>{{(index + 1) + '.  '}}</td>
+  <td>{{'  ' + holiday.date}}
+  <span *ngIf="closestHolidayBoolean(holiday)">{{remainingTimeElement}}</span>
+  </td>
+  <td>{{holiday.firstCountryHolidayName}}</td>
+  <td>{{holiday.secondCountryHolidayName}}</td>
+</tr>
+
+

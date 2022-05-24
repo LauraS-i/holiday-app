@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>Ünnepnapok kijelzése</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-md-10">
+      <div class="input-group ci">
+        <select class="form-control ci" [(ngModel)]="selectedValue1" (ngModelChange)="loadHolidays(selectedValue1,1)" >
+          <option >Select a country!</option>
+          <option *ngFor="let name of countriesNameArray">{{name}}</option>
+        </select>
+        <select class="form-control ci">
+          <option>2022</option>
+        </select>
+        <select class="form-control ci" [(ngModel)]="selectedValue2" (ngModelChange)="loadHolidays(selectedValue2,2)">
+          <option >Select a country!</option>
+          <option *ngFor="let name of countriesNameArray">{{name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-10" style="opacity:0.7;">
+      <div class="panel panel-default">
+        <div class="panel-heading">Ünnepnapok</div>
+        <div class="panel-body">
+          <p>Az alábbi táblázatban láthatóak a kiválasztott országok ünnepnapjai, illetve a
+            legközelebbi
+            ünnepnapig hátra lévő idő</p>
+        </div>
+        <table class="table">
+          <tr>
+            <th>#</th>
+            <th width="314">Dátum</th>
+            <th>{{selectedValue1}}</th>
+            <th>{{selectedValue2}}</th>
+          </tr>
+          <app-holidays-list *ngFor="let holiday of allHolidaysArray; let i = index" [index]="i" [holiday]="holiday" [remainingTimeElement]="remainingTimeElement"  [closestDay]="closestDay"></app-holidays-list>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
